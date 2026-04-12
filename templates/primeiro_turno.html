@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Resultados - 1º Turno</h1>
+
+<h2>Resultado Nacional</h2>
+
+<div class="grafico-container">
+    {{ grafico_nacional | safe }}
+</div>
+
+
+<h2>Tabela de Votos (Nacional)</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Candidato</th>
+            <th>Total de Votos</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for linha in dados %}
+
+    <tr>
+        <td>{{ linha.NM_CANDIDATO }}</td>
+
+        <td>
+            {{ "{:,.0f}".format(linha.QT_VOTOS_NOMINAIS).replace(',', '.') }}
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+
+<h2>Resultado por Estado</h2>
+
+<div class="grafico-container">
+    {{ grafico_estados | safe }}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise Eleições 2022</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+<nav>
+    <ul>
+        <a href="/">Início</a>
+
+        <a href="/primeiro_turno">1º Turno</a>
+
+        <a href="/segundo_turno">2º Turno</a>
+        
+        <a href="/contexto">Contexto da Eleição</a>
+    </ul>
+</nav>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
+
+</body>
+</html>

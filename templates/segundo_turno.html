@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Segundo Turno - Eleição 2022</h1>
+
+<h2>Resultado Nacional</h2>
+{{ grafico_nacional | safe }}
+
+<h2>Resultado por Estado</h2>
+{{ grafico_estados | safe }}
+
+<table>
+    <tr>
+        <th>Candidato</th>
+        <th>Votos</th>
+    </tr>
+
+    {% for linha in dados %}
+    <tr>
+        <td>{{ linha.NM_CANDIDATO }}</td>
+        <td>{{ "{:,.0f}".format(linha.QT_VOTOS_NOMINAIS).replace(',', '.') }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

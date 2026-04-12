@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Resultados por Estado - 1º Turno</h1>
+<p>Comparativo do desempenho dos principais candidatos em cada Unidade
+    da Federação.</p>
+<div class="grafico-container">
+    {{ grafico | safe }}
+</div>
+{% endblock %}
