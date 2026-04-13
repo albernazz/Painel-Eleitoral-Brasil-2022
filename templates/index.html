@@ -1,9 +1,103 @@
 {% extends "base.html" %}
+
 {% block content %}
-    <h1>Portal de Análise - Eleições Presidenciais 2022</h1>
-    <p>Bem-vindo ao projeto de análise de dados eleitorais.</p>
-<p>Este portal utiliza dados abertos do Tribunal Superior Eleitoral
-    (TSE) processados com Python, Pandas e Flask para apresentar visualizações
-    interativas dos resultados do pleito de 2022.</p>
-<p>Utilize o menu acima para navegar pelas análises disponíveis.</p>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>🗳️ Portal de Análise Eleitoral</h1>
+        <p>Explore os resultados das Eleições Presidenciais de 2022 no Brasil com visualizações interativas e dados oficiais do TSE.</p>
+        <div class="hero-badge">
+            📊 Dados atualizados do TSE
+        </div>
+    </div>
+</section>
+
+<div class="container">
+
+    <!-- Seção de Informações -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Sobre o Portal</h2>
+            <p class="section-subtitle">Análise completa dos resultados eleitorais processados com Python e Pandas</p>
+        </div>
+
+        <div class="card">
+            <p><strong>Bem-vindo!</strong> Este portal apresenta uma análise detalhada dos resultados das eleições presidenciais brasileiras de 2022, utilizando dados abertos do <strong>Tribunal Superior Eleitoral (TSE)</strong>.</p>
+
+            <p class="mt-3">Aqui você encontrará:</p>
+            <ul style="margin: 15px 0 0 20px; color: var(--text-light);">
+                <li>📈 Gráficos interativos de resultados nacionais</li>
+                <li>🗺️ Análise comparativa por estado</li>
+                <li>📋 Tabelas detalhadas com total de votos por candidato</li>
+                <li>📅 Contexto histórico sobre o pleito</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Navegação por Cards -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Explore as Análises</h2>
+            <p class="section-subtitle">Selecione uma seção para visualizar os resultados</p>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Card Primeiro Turno -->
+            <a href="/primeiro_turno" class="card card-nav">
+                <div class="card-icon">🗳️</div>
+                <h3>Primeiro Turno</h3>
+                <p>Veja os resultados completos do dia 02 de outubro de 2022, com análise nacional e por estado de todos os candidatos.</p>
+                <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Ver resultados →</span>
+            </a>
+
+            <!-- Card Segundo Turno -->
+            <a href="/segundo_turno" class="card card-nav">
+                <div class="card-icon">🏆</div>
+                <h3>Segundo Turno</h3>
+                <p>Análise dos resultados do dia 30 de outubro de 2022, quando o Brasil escolheu seu presidente para os próximos anos.</p>
+                <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Ver resultados →</span>
+            </a>
+
+            <!-- Card Contexto -->
+            <a href="/contexto" class="card card-nav">
+                <div class="card-icon">📚</div>
+                <h3>Contexto Histórico</h3>
+                <p>Entenda o cenário político de 2022, os principais candidatos e os fatos que marcaram este pleito histórico.</p>
+                <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Ler mais →</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Seção Destaques -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">Destaques da Eleição</h2>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <h4>📅 1º Turno</h4>
+                <p>Realizado em <strong>02 de outubro de 2022</strong> com 11 candidatos à presidência.</p>
+            </div>
+
+            <div class="info-box">
+                <h4>📅 2º Turno</h4>
+                <p>Realizado em <strong>30 de outubro de 2022</strong> com disputa entre os dois candidatos mais votados.</p>
+            </div>
+
+            <div class="info-box">
+                <h4>🗳️ Participação</h4>
+                <p>A eleição contou com a participação de milhões de eleitores em todo o território nacional.</p>
+            </div>
+
+            <div class="info-box">
+                <h4>📊 Fonte de Dados</h4>
+                <p>Todos os dados são oficiais do <strong>TSE</strong>, processados e visualizados de forma clara.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
 {% endblock %}

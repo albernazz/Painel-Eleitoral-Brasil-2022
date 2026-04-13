@@ -1,35 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análise Eleições 2022</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <meta name="description" content="Portal de Análise dos Resultados das Eleições Presidenciais Brasil 2022 - Dados do TSE">
+    <meta name="theme-color" content="#004488">
+    <title>{% block title %}Análise Eleições 2022{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗳️</text></svg>">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
-<nav>
-    <ul>
-        <a href="/">Início</a>
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <span class="nav-logo-icon">🇧🇷</span>
+                <span>Eleições 2022</span>
+            </a>
 
-        <a href="/primeiro_turno">1º Turno</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-        <a href="/segundo_turno">2º Turno</a>
-        
-        <a href="/contexto">Contexto da Eleição</a>
-    </ul>
-</nav>
-<div class="container">
-    {% block content %}{% endblock %}
-</div>
-</body>
-</html>
+            <ul class="nav-menu" id="navMenu">
+                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
+                    <span>🏠</span> Início
+                </a>
+                <a href="/primeiro_turno" class="nav-link {% if request.path == '/primeiro_turno' %}active{% endif %}">
+                    <span>1️⃣</span> Primeiro Turno
+                </a>
+                <a href="/segundo_turno" class="nav-link {% if request.path == '/segundo_turno' %}active{% endif %}">
+                    <span>2️⃣</span> Segundo Turno
+                </a>
+                <a href="/contexto" class="nav-link {% if request.path == '/contexto' %}active{% endif %}">
+                    <span>📚</span> Contexto
+                </a>
+            </ul>
+        </div>
+    </nav>
 
+    <!-- Conteúdo Principal -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p><strong>Portal de Análise Eleitoral 2022</strong></p>
+            <p>Dados oficiais do Tribunal Superior Eleitoral (TSE)</p>
+            <p style="margin-top: 15px; font-size: 0.9rem;">
+                Desenvolvido com Flask, Python e Pandas 🐍
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Menu mobile toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar')) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Adicionar animação aos cards ao carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

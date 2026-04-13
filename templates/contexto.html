@@ -1,29 +1,168 @@
 {% extends "base.html" %}
 
+{% block title %}Contexto Histórico | Eleições 2022{% endblock %}
+
 {% block content %}
 
-<h1>Contexto da Eleição Presidencial de 2022</h1>
+<section class="hero" style="padding: 40px 20px; background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">
+    <div class="hero-content">
+        <h1>📚 Contexto da Eleição</h1>
+        <p>Entenda os fatos históricos que marcaram as Eleições 2022</p>
+    </div>
+</section>
 
-<p>
-    A eleição presidencial brasileira de 2022 foi marcada por forte polarização
-    política entre os principais candidatos: Luiz Inácio Lula da Silva (PT) e
-    Jair Bolsonaro (PL).
-</p>
+<div class="container">
 
-<p>
-    No primeiro turno, realizado em 2 de outubro de 2022, nenhum candidato
-    alcançou mais de 50% dos votos válidos, levando a disputa para o segundo turno.
-</p>
+    <!-- Introdução -->
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    A <strong>eleição presidencial brasileira de 2022</strong> foi um dos eventos políticos mais significativos da história recente do Brasil. Marcada por forte polarização entre os principais candidatos, a disputa mobilizou milhões de eleitores e teve resultado histórico.
+                </p>
+            </div>
+        </div>
+    </section>
 
-<p>
-    O segundo turno ocorreu em 30 de outubro de 2022 e resultou na vitória de
-    Luiz Inácio Lula da Silva, que se tornou o primeiro presidente brasileiro
-    eleito para um terceiro mandato.
-</p>
+    <!-- Timeline -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">📅 Linha do Tempo</h2>
+            <p class="section-subtitle">Principais momentos do processo eleitoral de 2022</p>
+        </div>
 
-<p>
-    Os dados apresentados neste site foram obtidos a partir do repositório
-    oficial do Tribunal Superior Eleitoral (TSE).
-</p>
+        <div class="card">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">02 de Outubro de 2022</div>
+                    <div class="timeline-title">🗳️ Primeiro Turno</div>
+                    <div class="timeline-content">
+                        Realização do primeiro turno com 11 candidatos à presidência. Nenhum candidato alcançou a maioria absoluta dos votos válidos, resultando na necessidade de segundo turno entre os dois candidatos mais votados.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">30 de Outubro de 2022</div>
+                    <div class="timeline-title">🏆 Segundo Turno</div>
+                    <div class="timeline-content">
+                        Realização do segundo turno. A disputa foi entre os dois candidatos mais votados no primeiro turno, em uma eleição que mobilizou o país inteiro com alta participação popular.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">01 de Janeiro de 2023</div>
+                    <div class="timeline-title">🎗️ Posse Presidencial</div>
+                    <div class="timeline-content">
+                        Posse do presidente eleito Luiz Inácio Lula da Silva, marcando o retorno ao poder e tornando-se o primeiro presidente brasileiro eleito para um terceiro mandato.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principais Candidatos -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">👤 Principais Candidatos</h2>
+            <p class="section-subtitle">Os candidatos que disputaram a presidência no segundo turno</p>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Candidato 1 -->
+            <div class="card" style="border-top: 4px solid #c62828;">
+                <div class="card-icon" style="color: #c62828;">🟥</div>
+                <h3 class="card-title">Luiz Inácio Lula da Silva</h3>
+                <p><strong>Partido:</strong> PT (Partido dos Trabalhadores)</p>
+                <p class="mt-3" style="color: var(--text-light);">
+                    Ex-presidente da República (2003-2010), candidato à reeleição para um terceiro mandato não consecutivo.
+                </p>
+            </div>
+
+            <!-- Candidato 2 -->
+            <div class="card" style="border-top: 4px solid var(--primary-color);">
+                <div class="card-icon" style="color: var(--primary-color);">🟦</div>
+                <h3 class="card-title">Jair Messias Bolsonaro</h3>
+                <p><strong>Partido:</strong> PL (Partido Liberal)</p>
+                <p class="mt-3" style="color: var(--text-light);">
+                    Presidente da República em exercício (2019-2022), candidato à reeleição para um segundo mandato consecutivo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características da Eleição -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">📊 Características da Eleição</h2>
+            <p class="section-subtitle">Aspectos marcantes do pleito de 2022</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box" style="border-left-color: #6a1b9a;">
+                <h4>🎯 Polarização</h4>
+                <p>A eleição foi marcada por forte polarização política entre os dois principais candidatos.</p>
+            </div>
+
+            <div class="info-box" style="border-left-color: #1565c0;">
+                <h4>📱 Participação Digital</h4>
+                <p>Intenso debate nas redes sociais e grande mobilização de eleitores online.</p>
+            </div>
+
+            <div class="info-box" style="border-left-color: #2e7d32;">
+                <h4>🗳️ Voto Eletrônico</h4>
+                <p>Utilização do sistema de votação eletrônica em todo o território nacional.</p>
+            </div>
+
+            <div class="info-box" style="border-left-color: #f57c00;">
+                <h4>📍 Abrangência</h4>
+                <p>Eleição realizada em todos os 26 estados e no Distrito Federal.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre os Dados -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">📂 Sobre os Dados</h2>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <p>
+                    <strong>Fonte:</strong> Todos os dados apresentados neste portal foram obtidos do <strong>Repositório de Dados Eleitorais do Tribunal Superior Eleitoral (TSE)</strong>.
+                </p>
+
+                <p class="mt-3"><strong>Processamento:</strong> Os dados foram processados utilizando:</p>
+
+                <ul style="margin: 15px 0 0 20px; color: var(--text-light);">
+                    <li>🐍 Python para manipulação e análise</li>
+                    <li>📊 Pandas para agregação e tratamento de dados</li>
+                    <li>📈 Plotly para visualizações gráficas interativas</li>
+                    <li>🌐 Flask para a aplicação web</li>
+                </ul>
+
+                <p class="mt-3" style="color: var(--text-light);">
+                    <strong>Nota:</strong> Os dados estão em conformidade com a legislação eleitoral brasileira e são de domínio público conforme a Lei de Acesso à Informação (LAI).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navegação -->
+    <section class="section" style="margin-top: 40px;">
+        <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <a href="/primeiro_turno" class="card card-nav" style="text-align: center;">
+                <span style="font-size: 2rem;">🗳️</span>
+                <h3 style="margin-top: 10px;">Ver 1º Turno</h3>
+            </a>
+
+            <a href="/segundo_turno" class="card card-nav" style="text-align: center;">
+                <span style="font-size: 2rem;">🏆</span>
+                <h3 style="margin-top: 10px;">Ver 2º Turno</h3>
+            </a>
+        </div>
+    </section>
+
+</div>
 
 {% endblock %}

@@ -1,28 +1,142 @@
 {% extends "base.html" %}
 
+{% block title %}Resultados - 2º Turno | Eleições 2022{% endblock %}
+
 {% block content %}
 
-<h1>Segundo Turno - Eleição 2022</h1>
+<section class="hero" style="padding: 40px 20px; background: linear-gradient(135deg, #6a1b9a 0%, #4a148c 100%);">
+    <div class="hero-content">
+        <h1>🏆 Resultados do 2º Turno</h1>
+        <p>Eleições Presidenciais 2022 - 30 de Outubro</p>
+        <div class="hero-badge">🎗️ Definição do Presidente</div>
+    </div>
+</section>
 
-<h2>Resultado Nacional</h2>
-{{ grafico_nacional | safe }}
+<div class="container">
 
-<h2>Resultado por Estado</h2>
-{{ grafico_estados | safe }}
+    <!-- Introdução -->
+    <section class="section">
+        <div class="card" style="border-left: 4px solid #6a1b9a;">
+            <div class="card-body">
+                <p><strong>O segundo turno</strong> das eleições presidenciais de 2022 ocorreu em <strong>30 de outubro</strong>. O Brasil escolheu seu presidente para o período 2023-2026. A disputa foi acirrada entre os dois candidatos mais votados no primeiro turno.</p>
+            </div>
+        </div>
+    </section>
 
-<table>
-    <tr>
-        <th>Candidato</th>
-        <th>Votos</th>
-    </tr>
+    <!-- Resultado Nacional -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">📊 Resultado Nacional</h2>
+            <p class="section-subtitle">Votação final em todo o território brasileiro</p>
+        </div>
 
-    {% for linha in dados %}
-    <tr>
-        <td>{{ linha.NM_CANDIDATO }}</td>
-        <td>{{ "{:,.0f}".format(linha.QT_VOTOS_NOMINAIS).replace(',', '.') }}</td>
-    </tr>
-    {% endfor %}
+        <div class="chart-container">
+            {{ grafico_nacional | safe }}
+        </div>
+    </section>
 
-</table>
+    <!-- Análise Destacada -->
+    <section class="section">
+        <div class="info-grid">
+            {% if dados and dados|length > 0 %}
+            <div class="card" style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border: 2px solid #4caf50;">
+                <div class="card-header">
+                    <h3 class="card-title" style="color: #2e7d32;">🏆 Vencedor</h3>
+                </div>
+                <div class="card-body">
+                    <h2 style="margin-bottom: 10px; color: #1b5e20;">{{ dados[0].NM_CANDIDATO }}</h2>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: #2e7d32;">
+                        {{ "{:,.0f}".format(dados[0].QT_VOTOS_NOMINAIS).replace(",", ".") }} votos
+                    </p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if dados and dados|length > 1 %}
+            <div class="card" style="background: linear-gradient(135deg, #fbe9e7 0%, #ffccbc 100%); border: 2px solid #ff7043;">
+                <div class="card-header">
+                    <h3 class="card-title" style="color: #d84315;">📊 2º Colocado</h3>
+                </div>
+                <div class="card-body">
+                    <h2 style="margin-bottom: 10px; color: #bf360c;">{{ dados[1].NM_CANDIDATO }}</h2>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: #d84315;">
+                        {{ "{:,.0f}".format(dados[1].QT_VOTOS_NOMINAIS).replace(",", ".") }} votos
+                    </p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Resultado por Estado -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">🗺️ Resultado por Estado</h2>
+            <p class="section-subtitle">Comparativo da distribuição de votos por unidade da federação</p>
+        </div>
+
+        <div class="chart-container">
+            {{ grafico_estados | safe }}
+        </div>
+    </section>
+
+    <!-- Tabela de Resultados -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">📋 Tabela de Votos</h2>
+            <p class="section-subtitle">Resultado final do segundo turno</p>
+        </div>
+
+        <div class="card">
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Colocação</th>
+                            <th>Candidato</th>
+                            <th style="text-align: right;">Total de Votos</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for linha in dados %}
+                        <tr>
+                            <td>
+                                {% if loop.index == 1 %}
+                                    🥇 <strong>1º Lugar</strong>
+                                {% elif loop.index == 2 %}
+                                    🥈 <strong>2º Lugar</strong>
+                                {% else %}
+                                    <strong>#{{ loop.index }}</strong>
+                                {% endif %}
+                            </td>
+                            <td><strong>{{ linha.NM_CANDIDATO }}</strong></td>
+                            <td style="text-align: right; font-family: monospace; font-size: 1.1rem; font-weight: 600;">
+                                {{ "{:,.0f}".format(linha.QT_VOTOS_NOMINAIS).replace(",", ".") }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navegação -->
+    <section class="section" style="margin-top: 40px;">
+        <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <a href="/primeiro_turno" class="card card-nav" style="text-align: center;">
+                <span style="font-size: 2rem;">←</span>
+                <h3 style="margin-top: 10px;">Voltar ao 1º Turno</h3>
+            </a>
+
+            <a href="/contexto" class="card card-nav" style="text-align: center;">
+                <span style="font-size: 2rem;">📚</span>
+                <h3 style="margin-top: 10px;">Ver Contexto Histórico</h3>
+            </a>
+        </div>
+    </section>
+
+</div>
 
 {% endblock %}

@@ -1,51 +1,140 @@
 {% extends "base.html" %}
 
+{% block title %}Resultados - 1º Turno | Eleições 2022{% endblock %}
+
 {% block content %}
 
-<h1>Resultados - 1º Turno</h1>
+<!-- Hero -->
+<section class="hero" style="padding: 40px 20px;">
+    <div class="hero-content">
+        <h1>🗳️ Resultados do 1º Turno</h1>
+        <p>Eleições Presidenciais 2022 - 02 de Outubro</p>
+        <div class="hero-badge">📊 Análise Nacional e por Estado</div>
+    </div>
+</section>
 
-<h2>Resultado Nacional</h2>
+<div class="container">
 
-<div class="grafico-container">
-    {{ grafico_nacional | safe }}
+    <!-- Introdução -->
+    <section class="section">
+        <div class="card">
+            <div class="card-body">
+                <p><strong>O primeiro turno</strong> das eleições presidenciais de 2022 ocorreu em 02 de outubro. Nenhum candidato alcançou mais de 50% dos votos válidos, levando a disputa para o segundo turno. Confira abaixo a distribuição dos votos em nível nacional e a comparação por estado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultado Nacional -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">📊 Resultado Nacional</h2>
+            <p class="section-subtitle">Total de votos por candidato em todo o território brasileiro</p>
+        </div>
+
+        <div class="chart-container">
+            {{ grafico_nacional | safe }}
+        </div>
+    </section>
+
+    <!-- Tabela de Resultados -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">📋 Tabela de Votos</h2>
+            <p class="section-subtitle">Valores absolutos do pleito nacional</p>
+        </div>
+
+        <div class="card">
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Posição</th>
+                            <th>Candidato</th>
+                            <th style="text-align: right;">Total de Votos</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for linha in dados %}
+                        <tr>
+                            <td><strong>#{{ loop.index }}</strong></td>
+                            <td>{{ linha.NM_CANDIDATO }}</td>
+                            <td style="text-align: right; font-family: monospace; font-size: 1.05rem;">
+                                {{ "{:,.0f}".format(linha.QT_VOTOS_NOMINAIS).replace(",", ".") }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultado por Estado -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">🗺️ Resultado por Estado</h2>
+            <p class="section-subtitle">Comparativo dos principais candidatos em cada unidade da federação</p>
+        </div>
+
+        <div class="chart-container">
+            {{ grafico_estados | safe }}
+        </div>
+    </section>
+
+    <!-- Candidatos Principais -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">👤 Principais Candidatos</h2>
+            <p class="section-subtitle">Informações sobre os candidatos mais votados no 1º turno</p>
+        </div>
+
+        <div class="info-grid">
+            {% if dados and dados|length > 0 %}
+            <div class="card">
+                <div class="candidate-card">
+                    <div class="candidate-avatar" style="background: linear-gradient(135deg, #c62828, #8e0000);">1º</div>
+                    <div class="candidate-info">
+                        <h4>{{ dados[0].NM_CANDIDATO }}</h4>
+                        <span>1º lugar - {{ "{:,.0f}".format(dados[0].QT_VOTOS_NOMINAIS).replace(",", ".") }} votos</span>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if dados and dados|length > 1 %}
+            <div class="card">
+                <div class="candidate-card">
+                    <div class="candidate-avatar" style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));">2º</div>
+                    <div class="candidate-info">
+                        <h4>{{ dados[1].NM_CANDIDATO }}</h4>
+                        <span>2º lugar - {{ "{:,.0f}".format(dados[1].QT_VOTOS_NOMINAIS).replace(",", ".") }} votos</span>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: var(--bg-light); border-radius: var(--border-radius);">
+            <p style="margin: 0; color: var(--text-light); font-size: 0.95rem;">
+                <strong>💡 Nota:</strong> Apenas os dois candidatos mais votados no primeiro turno (
+                {% if dados and dados|length > 0 %}{{ dados[0].NM_CANDIDATO }}{% endif %} e
+                {% if dados and dados|length > 1 %}{{ dados[1].NM_CANDIDATO }}{% endif %})
+                disputaram o segundo turno em 30 de outubro de 2022.
+            </p>
+        </div>
+    </section>
+
+    <!-- Navegação -->
+    <section class="section" style="margin-top: 40px;">
+        <div class="card" style="text-align: center;">
+            <p style="margin-bottom: 15px; color: var(--text-light);">Continue explorando:</p>
+            <a href="/segundo_turno" class="nav-link" style="display: inline-block; background: var(--primary-color); color: white; padding: 12px 24px; border-radius: var(--border-radius); text-decoration: none;">
+                Ver Resultados do 2º Turno →
+            </a>
+        </div>
+    </section>
+
 </div>
-
-
-<h2>Tabela de Votos (Nacional)</h2>
-
-<table>
-    <thead>
-        <tr>
-            <th>Candidato</th>
-            <th>Total de Votos</th>
-        </tr>
-    </thead>
-
-    <tbody>
-
-    {% for linha in dados %}
-
-    <tr>
-        <td>{{ linha.NM_CANDIDATO }}</td>
-
-        <td>
-            {{ "{:,.0f}".format(linha.QT_VOTOS_NOMINAIS).replace(',', '.') }}
-        </td>
-
-    </tr>
-
-    {% endfor %}
-
-    </tbody>
-
-</table>
-
-
-<h2>Resultado por Estado</h2>
-
-<div class="grafico-container">
-    {{ grafico_estados | safe }}
-</div>
-
 
 {% endblock %}
