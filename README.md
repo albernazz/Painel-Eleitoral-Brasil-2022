@@ -90,10 +90,4 @@ O `data_loader.py` seleciona colunas específicas para otimizar o carregamento e
     ```
 6.  **Acesse o painel:** Abra seu navegador e acesse `http://127.0.0.1:5000/`.
 
-## Contribuição
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests para melhorias e novas funcionalidades.
-
-## Licença
-
-Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
